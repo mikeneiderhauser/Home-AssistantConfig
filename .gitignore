@@ -1,0 +1,26 @@
+# Exclude deps dir
+deps
+
+# exclude secrets file
+secrets.yaml
+
+# exclude home-assistant log and db
+home-assistant.log
+home-assistant_v2.db
+
+# exclude zwave files
+OZW_Log.txt
+pyozw.sqlite
+# excluding for now until proven safe to commit
+zwcfg_*.xml
+
+# exclude phue config key
+phue.conf
+
+# Not needed
+.DS_Store
+
+# Not 100% sure where this comes from but more than likly safe to exclude
+.uuid
+
+*.swp

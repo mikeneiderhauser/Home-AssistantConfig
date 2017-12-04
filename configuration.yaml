@@ -1,0 +1,94 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Red Brick House
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret secret_lat
+  longitude: !secert secret_lon
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret secret_ele
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret secret_tz
+  # Customization file
+  customize: !include customize.yaml
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor:
+  - platform: yr
+
+# Text to speech
+tts:
+  - platform: google
+
+light:
+  - platform: hue
+    host: !secret hue_ip
+    allow_unreachable: true
+    filename: phue.conf
+
+switch:
+  # Digital Loggers 8 outlet PDU. Used for outdoor lights
+  - platform: digitalloggers
+    host: !secret digitallogger_ip
+    username: !secret digitallogger_hass_usr
+    password: !secret digitallogger_hass_pwd
+    allow_unreachable: true
+  # TPLink wifi outlet. Used for Christmas tree
+  - platform: tplink
+    host: !secret tplink_tree_ip
+    name: Tree
+    allow_unreachable: true
+  # TPLink wifi outlet. Used for garland
+  - platform: tplink
+    host: !secret tplink_garland_ip
+    name: Garland
+    allow_unreachable: true
+
+zwave:
+    usb_path: !secret zstick_path
+    network_key: !secret zwave_network_key
+
+emulated_hue:
+    host_ip: !secret hass_ip
+    expose_by_default: false
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include_dir_merge_list scene

@@ -1,0 +1,59 @@
+- name: living_room_outlet_single_on
+  entities:
+    
+- name: living_room_outlet_single_off
+  entities:
+
+- name: living_room_outlet_double_on
+  entities:
+- name: living_room_outlet_double_off
+  entities:
+- name: living_room_outlet_triple_on
+  entities:
+    light.couch_left:
+      state: on
+      #xy_color: [0.4575,0.4099]
+      #rgb_color: [179,139,80]
+      #brightness: 77
+      #color_temp: 366
+    light.couch_center:
+      state: on
+      #xy_color: [0.4575,0.4099]
+      #rgb_color: [179,139,80]
+      #brightness: 77
+      #color_temp: 366
+    light.couch_right:
+      state: on
+      #xy_color: [0.4575,0.4099]
+      #rgb_color: [179,139,80]
+      #brightness: 77
+      #color_temp: 366
+- name: living_room_outlet_triple_off
+  entities:
+    light.couch_left:
+      state: off
+    light.couch_center:
+      state: off
+    light.couch_right:
+      state: off
+
+#- name: entry_light_single_on
+#- name: entry_light_single_off
+#- name: entry_light_double_on
+#- name: entry_light_double_off
+#- name: entry_light_triple_on
+#- name: entry_light_triple_off
+
+#- name: front_porch_single_on
+#- name: front_porch_single_off
+#- name: front_porch_double_on
+#- name: front_porch_double_off
+#- name: front_porch_triple_on
+#- name: front_porch_triple_off
+
+#- name: single_on
+#- name: single_off
+#- name: double_on
+#- name: double_off
+#- name: triple_on
+#- name: triple_off

@@ -1,0 +1,49 @@
+# https://home-assistant.io/docs/z-wave/device-specific/#homeseer-switches
+- alias: Living Room - Double Tap On
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      object_id: living_room_outlet_3
+      scene_id: 1
+      scene_data: 3
+  action:
+    service: switch.turn_on
+    entity_id: switch.garland
+
+- alias: Living Room - Double Tap Off
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      object_id: living_room_outlet_3
+      scene_id: 2
+      scene_data: 3
+  action:
+    service: switch.turn_off
+    entity_id: switch.garland
+
+# The following two automations use mismatched scenes
+- alias: Living Room - Single Tap On
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      object_id: living_room_outlet_3
+      scene_id: 1
+      scene_data: 0
+  action:
+    service: scene.turn_on
+    entity_id: scene.living_room_outlet_triple_on
+
+- alias: Living Room - Single Tap Off
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      object_id: living_room_outlet_3
+      scene_id: 2
+      scene_data: 0
+  action:
+    service: scene.turn_on
+    entity_id: scene.living_room_outlet_triple_off
